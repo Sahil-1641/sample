@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#173b35">
+  <meta name="description" content="Find your kind of elsewhere with ExploreSpace.">
+  <title>ExploreSpace | Find Your Kind of Elsewhere</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --forest: #173b35;
+      --paper: #f7f6f0;
+      --white: #fffefa;
+      --coral: #e78669;
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "DM Sans", "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-height: 100%;
+    }
+
+    body {
+      display: grid;
+      min-height: 100svh;
+      margin: 0;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      background: var(--paper);
+      color: var(--forest);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-header {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      min-height: 78px;
+      padding-inline: max(32px, calc((100vw - 1200px) / 2));
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      background: var(--forest);
+      color: var(--white);
+    }
+
+    .brand {
+      display: inline-flex;
+      flex-shrink: 0;
+      align-items: center;
+      gap: 10px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border: 1px solid rgb(255 255 255 / 65%);
+      border-radius: 50%;
+      color: #f0a184;
+      font-family: var(--serif);
+      font-size: 19px;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(18px, 3vw, 38px);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .site-nav a {
+      transition: color 180ms ease;
+    }
+
+    .site-nav a:hover,
+    .site-nav a:focus-visible {
+      color: #ffc4a9;
+    }
+
+    .nav-contact {
+      padding: 10px 15px;
+      border: 1px solid rgb(255 255 255 / 58%);
+      border-radius: 3px;
+    }
+
+    .hero {
+      position: relative;
+      display: flex;
+      min-height: 0;
+      padding: 48px 32px;
+      overflow: hidden;
+      align-items: center;
+      background: #23483f url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2200&q=85") center 48% / cover no-repeat;
+      color: var(--white);
+      isolation: isolate;
+    }
+
+    .hero::before {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background: linear-gradient(90deg, rgb(15 39 34 / 82%) 0%, rgb(15 39 34 / 48%) 54%, rgb(15 39 34 / 10%) 100%), linear-gradient(0deg, rgb(15 39 34 / 30%), transparent 45%);
+      content: "";
+    }
+
+    .hero-content {
+      width: min(100%, 1160px);
+      margin-inline: auto;
+      animation: arrive 650ms ease-out both;
+    }
+
+    .eyebrow {
+      display: flex;
+      margin: 0 0 18px;
+      align-items: center;
+      gap: 11px;
+      color: #ffd0b8;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 29px;
+      height: 1px;
+      background: currentColor;
+      content: "";
+    }
+
+    h1,
+    p {
+      margin-top: 0;
+    }
+
+    .hero h1 {
+      max-width: 780px;
+      margin-bottom: 18px;
+      font-family: var(--serif);
+      font-size: clamp(50px, 7vw, 82px);
+      font-weight: 500;
+      line-height: 1.04;
+    }
+
+    .hero-copy {
+      max-width: 450px;
+      margin-bottom: 27px;
+      color: rgb(255 254 250 / 86%);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 48px;
+      padding-inline: 19px;
+      align-items: center;
+      gap: 19px;
+      border: 1px solid var(--coral);
+      border-radius: 3px;
+      background: var(--coral);
+      color: #1c332e;
+      font-size: 13px;
+      font-weight: 700;
+      transition: transform 180ms ease, background 180ms ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-2px);
+      background: #f5a88b;
+    }
+
+    .button span {
+      font-size: 19px;
+      line-height: 1;
+    }
+
+    footer {
+      display: flex;
+      min-height: 54px;
+      padding: 14px 32px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      background: #102e29;
+      color: rgb(255 254 250 / 72%);
+      font-size: 11px;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    .footer-note {
+      color: rgb(255 254 250 / 52%);
+    }
+
+    @keyframes arrive {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 620px) {
+      .site-header {
+        min-height: 72px;
+        padding-inline: 20px;
+        gap: 12px;
+      }
+
+      .brand {
+        gap: 8px;
+        font-size: 16px;
+      }
+
+      .brand-mark {
+        width: 30px;
+        height: 30px;
+      }
+
+      .site-nav {
+        gap: 12px;
+        font-size: 11px;
+      }
+
+      .nav-contact {
+        padding: 8px 9px;
+      }
+
+      .hero {
+        padding: 44px 24px;
+        background-position: 58% center;
+      }
+
+      .hero::before {
+        background: linear-gradient(90deg, rgb(15 39 34 / 78%), rgb(15 39 34 / 36%)), linear-gradient(0deg, rgb(15 39 34 / 30%), transparent 50%);
+      }
+
+      .hero h1 {
+        max-width: 540px;
+        font-size: clamp(48px, 11vw, 68px);
+      }
+
+      footer {
+        padding-inline: 20px;
+      }
+
+      .footer-note {
+        display: none;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .site-header {
+        padding-inline: 14px;
+      }
+
+      .site-nav {
+        gap: 9px;
+        font-size: 10px;
+      }
+
+      .nav-contact {
+        padding: 7px;
+      }
+
+      .hero {
+        padding-inline: 20px;
+      }
+
+      .hero h1 {
+        font-size: 46px;
+      }
+
+      footer {
+        padding-inline: 14px;
+      }
+    }
+
+    @media (max-width: 350px) {
+      .site-header {
+        min-height: auto;
+        padding-block: 12px;
+        flex-wrap: wrap;
+      }
+
+      .site-nav {
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+
+    @media (max-height: 560px) and (min-width: 621px) {
+      .site-header {
+        min-height: 64px;
+      }
+
+      .hero {
+        padding-block: 24px;
+      }
+
+      .hero h1 {
+        font-size: clamp(42px, 6vw, 62px);
+      }
+
+      .hero-copy {
+        margin-bottom: 18px;
+      }
+
+      footer {
+        min-height: 44px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="ExploreSpace home">
+      <span class="brand-mark" aria-hidden="true">E</span>
+      <span>ExploreSpace</span>
+    </a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="https://www.google.com/travel/">Discover</a>
+      <a class="nav-contact" href="mailto:">Contact</a>
+    </nav>
+  </header>
+
+  <main class="hero" id="home" aria-labelledby="hero-title">
+    <div class="hero-content">
+      <p class="eyebrow">A little farther, a little freer</p>
+      <h1 id="hero-title">Find your kind of elsewhere.</h1>
+      <p class="hero-copy">Quiet coastlines, winding old streets, and wild open skies. Your next story starts somewhere new.</p>
+      <a class="button" href="https://www.google.com/travel/">Explore Now <span aria-hidden="true">&rarr;</span></a>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 ExploreSpace | Created by Sahil</p>
+    <p class="footer-note">Made for the way out there.</p>
+  </footer>
+</body>
+</html>
